@@ -1,22 +1,18 @@
 <?php
-// display_staff.php
 
-include "dbconfig.php"; // must define: $hostname, $username, $password, $dbname
+include "dbconfig.php"; 
 
-// Connect
 $con = mysqli_connect($hostname, $username, $password, $dbname);
 if (!$con) {
     die("<p>Cannot connect to DB</p>");
 }
 
-// Query
 $sql = "SELECT * FROM dreamhome.Staff";
 $result = mysqli_query($con, $sql);
 if (!$result) {
     die("<p>Query failed: " . htmlspecialchars(mysqli_error($con)) . "</p>");
 }
 
-// Get columns
 $fields = mysqli_fetch_fields($result);
 ?>
 <!DOCTYPE html>
@@ -76,3 +72,4 @@ while ($row = mysqli_fetch_assoc($result)) {
 mysqli_free_result($result);
 mysqli_close($con);
 ?>
+
